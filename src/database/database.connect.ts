@@ -1,7 +1,6 @@
 import { createConnection, Connection } from "typeorm";
-
 export class DatabaseConnection {
-  public async connect() {
+  public async connect(databaseConfig) {
     try {
       await createConnection().then(() => console.log("database connected"));
     } catch (error) {
