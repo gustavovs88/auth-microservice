@@ -4,6 +4,7 @@
     "target": "es2015",
     "module": "commonjs",
     "moduleResolution": "node",
+    "baseUrl": "./src",
     "outDir": "./dist",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

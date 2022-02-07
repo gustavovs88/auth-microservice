@@ -1,10 +1,13 @@
-import { createConnection, Connection } from "typeorm";
-export class DatabaseConnection {
-  public async connect(databaseConfig) {
+import { Connection, createConnection } from "typeorm";
+
+class DatabaseConnection {
+  public async connect(databaseConfig): Promise<Connection> {
     try {
-      await createConnection().then(() => console.log("database connected"));
+      return await createConnection(databaseConfig);
     } catch (error) {
       console.error(error.message);
     }
   }
 }
+
+export default new DatabaseConnection();

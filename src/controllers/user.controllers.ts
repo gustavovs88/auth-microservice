@@ -1,17 +1,22 @@
 import { getConnection } from "typeorm";
-import { User } from "../models/User";
-import { Request, Response, NextFunction } from "express";
+import AppUser from "../models/AppUser.entity";
 const bcrypt = require("bcrypt");
 
 class UserController {
-  async createUser(email, password) {
+  async createUser(email: string, password: string) {
     const hashPassword = await bcrypt.hash(password, 10);
 
     await getConnection()
       .createQueryBuilder()
       .insert()
-      .into(User)
-      .values([{ email: email, password: hashPassword }])
+      .into(AppUser)
+      .values([
+        {
+          email: email,
+          password: hashPassword,
+        },
+      ])
+      .updateEntity(false)
       .execute();
 
     return email;

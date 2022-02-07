@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from "express";
 import userControllers from "../controllers/user.controllers";
-import { User } from "../models/User";
+import AppUser from "../models/AppUser.entity";
 
 const usersRoutes = Router();
 
